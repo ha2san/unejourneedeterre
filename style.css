@@ -1,0 +1,359 @@
+/* =====================================
+   RESET ET COMPORTEMENT DE BASE
+===================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: "Courier New", Courier, monospace;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* =====================================
+   FOND ANIMÉ FIXE
+===================================== */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.bg-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.bg-slide.active {
+    opacity: 1;
+}
+
+/* =====================================
+   NAVIGATION
+===================================== */
+.top-nav {
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.prod-logo img {
+    width: 100px;
+    mix-blend-mode: screen;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* =====================================
+   ACCUEIL
+===================================== */
+
+/* ACCUEIL - titre et boutons en bas à gauche */
+.content {
+    padding: 20px 50px 10vh 50px; /* padding-bottom pour rester au-dessus du bas */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  /* pousse le contenu vers le bas */
+    align-items: flex-start;    /* aligne le contenu à gauche */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* TITRE */
+.content h1 {
+    font-size: 3.5rem;
+    margin: 0 0 20px 0;
+    max-width: 50%;       /* ne dépasse pas la moitié de l'écran */
+    word-wrap: break-word; /* retour à la ligne si trop long */
+    text-align: left;      /* texte aligné à gauche */
+}
+
+/* BOUTONS */
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;      /* passent à la ligne si trop larges */
+    justify-content: flex-start; /* alignement à gauche */
+}
+
+.btn-img img {
+    width: 120px;          
+    max-width: 40vw;       
+    transition: transform 0.3s;
+}
+
+.btn-img img:hover {
+    transform: scale(1.05);
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+    .content h1 {
+        font-size: 2.2rem;
+        max-width: 90%;  /* sur mobile, presque toute la largeur */
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;        /* moins d’espace entre les boutons */
+        justify-content: flex-start;
+    }
+
+    .btn-img img {
+        width: 100px;
+        max-width: 70vw;
+    }
+}
+
+/* =====================================
+   SECTIONS D'INFO
+===================================== */
+.section-full {
+    min-height: 100vh; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.info-section {
+    align-items: center;
+    text-align: center;
+    padding-top: 80px; 
+}
+
+.glass-box {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 700px;
+    margin: 20px;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.cast-list { list-style: none; padding: 0; line-height: 2; }
+
+.scroll-down, .scroll-up {
+    display: block;
+    margin-top: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* =====================================
+   FILM.HTML - CONTENEUR PRINCIPAL
+===================================== */
+.main-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Lecteur Vidéo */
+.video-container { 
+    width: 90%; 
+    max-width: 1000px;
+    margin-bottom: 30px;
+}
+
+.video-wrapper { 
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-wrapper iframe { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    border: none; 
+}
+
+/* Section Interaction */
+.interaction-box {
+    text-align: center;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.question {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.btn-ticket {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.3s;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.btn-ticket:hover {
+    transform: scale(1.1);
+}
+
+/* Section Description */
+.description-section {
+    max-width: 800px;
+    padding: 40px 20px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+}
+
+.description-section h2 {
+    text-align: left;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.description-section p {
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+/* =====================================
+   MEDIA QUERIES MOBILE
+===================================== */
+@media screen and (max-width: 768px) {
+
+    /* NAVIGATION */
+    .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .prod-logo img {
+        width: 70px;
+        margin-bottom: 10px;
+    }
+
+    .links a {
+        margin-left: 0;
+        margin-right: 15px;
+        font-size: 12px;
+    }
+
+    /* ACCUEIL / TITRE */
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-img img {
+        width: 120px;
+    }
+
+    /* FILM.HTML */
+    .main-container {
+        margin-top: 80px;
+        padding: 0 10px;
+    }
+
+    .video-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .interaction-box {
+        padding: 20px 10px;
+    }
+
+    .question {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .btn-ticket {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .description-section {
+        padding: 20px 10px;
+    }
+
+    .description-section h2 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .description-section p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* SECTIONS D'INFO */
+    .glass-box {
+        padding: 25px 15px;
+        max-width: 90%;
+    }
+
+    .info-section h2 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .scroll-down, .scroll-up {
+        font-size: 0.8rem;
+    }
+}
+

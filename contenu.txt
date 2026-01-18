@@ -1,0 +1,386 @@
+=== film.html ===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visionnage - UNE JOURNÉE DE TERRE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { 
+            margin: 0; 
+            background: black; 
+            color: white; 
+            font-family: "Courier New", Courier, monospace; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Ajustement pour laisser de la place à la nav fixe */
+        .main-container {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Lecteur Vidéo */
+        .video-container { 
+            width: 90%; 
+            max-width: 1000px;
+            margin-bottom: 30px;
+        }
+        
+        .video-wrapper { 
+            position: relative;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .video-wrapper iframe { 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        }
+
+        /* Section Interaction */
+        .interaction-box {
+            text-align: center;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .btn-ticket {
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .btn-ticket:hover {
+            transform: scale(1.1);
+        }
+
+        /* Section Description */
+        .description-section {
+            max-width: 800px;
+            padding: 40px 20px;
+            line-height: 1.6;
+            margin-bottom: 60px;
+        }
+
+        .description-section h2 {
+            text-align: left;
+            border-bottom: 1px solid white;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .description-section p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="prod-logo">
+            <a href="index.html">
+                <img src="uranus-film.png" alt="Production">
+            </a>
+        </div>
+        <div class="links">
+            <a href="https://ko-fi.com/ton-lien/contact">CONTACT</a>
+            <a href="https://ko-fi.com/ton-lien/gallery" target="_blank">GALERIE</a>
+            <a href="https://ko-fi.com/ton-lien/shop" target="_blank">SHOP</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe src="https://player.vimeo.com/video/TON_ID_VIDEO" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <section class="interaction-box">
+            <p class="question">AVEZ-VOUS AIMÉ ?</p>
+            <p>Soutenez le projet en réservant votre place pour la prochaine séance.</p>
+            <a href="https://ko-fi.com/ton-lien/shop" target="_blank" class="btn-ticket">PRENDRE UN TICKET</a>
+        </section>
+
+        <article class="description-section">
+            <h2>DESCRIPTION</h2>
+            <p>
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            blabla bla
+            </p>
+            <p>
+                Réalisation et Montage : Salif<br>
+                Production : Uranus Film
+            </p>
+        </article>
+    </div>
+
+</body>
+</html>
+
+=== index.html ===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNE JOURNÉE DE TERRE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-container">
+        <div class="bg-slide active" style="background-image: url('DEPHILEMENT-SITE-1.png');"></div>
+        <div class="bg-slide" style="background-image: url('DEPHILEMENT-SITE-2.png');"></div>
+        <div class="bg-slide" style="background-image: url('DEPHILEMENT-SITE-3.png');"></div>
+        <div class="bg-slide" style="background-image: url('DEPHILEMENT-SITE-4.png');"></div>
+    </div>
+
+    <nav class="top-nav">
+        <div class="prod-logo">
+            <img src="uranus-film.png" alt="Production">
+        </div>
+        <div class="links">
+            <a href="https://ko-fi.com/ton-lien/contact">CONTACT</a>
+            <a href="https://ko-fi.com/ton-lien/gallery" target="_blank">GALERIE</a>
+            <a href="https://ko-fi.com/ton-lien/shop" target="_blank">SHOP</a>
+        </div>
+    </nav>
+
+    <main class="content section-full">
+        <h1>UNE JOURNÉE DE TERRE</h1>
+        <div class="buttons">
+            <a href="film.html" class="btn-img">
+                <img src="logo-site0.png" alt="Regarder">
+            </a>
+            <a href="#synopsis" class="btn-img">
+                <img src="logo-site1.png" alt="Info">
+            </a>
+        </div>
+    </main>
+
+    <section id="synopsis" class="info-section section-full">
+        <div class="glass-box">
+            <h2>SYNOPSIS</h2>
+            <p>Un film de fou, dinguerie, Karim a la prod, DJ snake au platine</p>
+            <a href="#distribution" class="scroll-down">↓ Voir la distribution</a>
+        </div>
+    </section>
+
+    <section id="distribution" class="info-section section-full">
+        <div class="glass-box">
+            <h2>DISTRIBUTION</h2>
+            <ul class="cast-list">
+                <li><strong>Réalisation :</strong> Salif</li>
+                <li><strong>Image :</strong> Uranus Film</li>
+                <li><strong>Musique :</strong> Artiste Nom</li>
+            </ul>
+            <a href="#" class="scroll-up">↑ Retour à l'accueil</a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+=== style.css ===
+/* Reset et comportement de scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: "Courier New", Courier, monospace;
+    color: white;
+    overflow-x: hidden; /* Empêche le glissement horizontal */
+}
+
+/* FOND ANIMÉ FIXE */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Mis en négatif pour ne pas bloquer les clics */
+}
+
+.bg-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.bg-slide.active {
+    opacity: 1;
+}
+
+/* STRUCTURE DES SECTIONS */
+.section-full {
+    min-height: 100vh; /* Utilise min-height au lieu de height */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* NAVIGATION */
+.top-nav {
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.prod-logo img {
+    width: 100px;
+    mix-blend-mode: screen;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* CONTENU ACCUEIL */
+.content {
+    padding-left: 50px;
+    justify-content: flex-end;
+    padding-bottom: 10vh;
+}
+
+h1 { font-size: 3.5rem; margin-bottom: 30px; }
+
+.buttons { 
+    display: flex; 
+    gap: 20px;
+    z-index: 110; /* Assure que les boutons sont cliquables */
+}
+
+.btn-img img {
+    width: 160px;
+    mix-blend-mode: screen;
+    transition: transform 0.3s;
+}
+
+.btn-img img:hover { transform: scale(1.1); }
+
+/* SECTIONS D'INFORMATION */
+.info-section {
+    align-items: center;
+    text-align: center;
+    padding-top: 80px; /* Évite que la nav cache le titre */
+}
+
+.glass-box {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 700px;
+    margin: 20px;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.cast-list { list-style: none; padding: 0; line-height: 2; }
+
+.scroll-down, .scroll-up {
+    display: block;
+    margin-top: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.
+├── .comments
+│   ├── logo-site0.png.xml
+│   └── logo-site1.png.xml
+├── contenu.txt
+├── DEPHILEMENT-SITE-1.png
+├── DEPHILEMENT-SITE-2.png
+├── DEPHILEMENT-SITE-3.png
+├── DEPHILEMENT-SITE-4.png
+├── film.html
+├── index.html
+├── logo-site0.png
+├── logo-site1.png
+├── RENDU-FINAL_MAQUETTE00089184.jpg
+├── script.js
+├── style.css
+└── uranus-film.png
+
+2 directories, 15 files
