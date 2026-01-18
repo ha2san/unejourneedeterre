@@ -1,17 +1,19 @@
 /* =====================================
-   RESET ET COMPORTEMENT DE BASE
+   RESET ET BASE
 ===================================== */
 html {
     scroll-behavior: smooth;
 }
 
 body {
+    font-family: "Courier New", Courier, monospace;
+    color: white;
     margin: 0;
     padding: 0;
     background-color: black;
-    font-family: "Courier New", Courier, monospace;
-    color: white;
     overflow-x: hidden;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 /* =====================================
@@ -44,7 +46,7 @@ body {
    NAVIGATION
 ===================================== */
 .top-nav {
-    position: fixed; 
+    position: fixed;
     top: 0;
     width: 100%;
     display: flex;
@@ -57,6 +59,8 @@ body {
 
 .prod-logo img {
     width: 100px;
+    height: auto;
+    object-fit: contain;
     mix-blend-mode: screen;
 }
 
@@ -71,62 +75,44 @@ body {
 /* =====================================
    ACCUEIL
 ===================================== */
-
-/* ACCUEIL - titre et boutons en bas à gauche */
 .content {
-    padding: 20px 50px 10vh 50px; /* padding-bottom pour rester au-dessus du bas */
+    padding: 20px 50px 20px 50px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;  /* pousse le contenu vers le bas */
-    align-items: flex-start;    /* aligne le contenu à gauche */
+    justify-content: flex-end;  /* pousse contenu en bas */
+    align-items: flex-start;    /* alignement à gauche */
     min-height: 100vh;
     box-sizing: border-box;
 }
 
 /* TITRE */
 .content h1 {
+    font-family: "Arial Black", Arial, sans-serif;
     font-size: 3.5rem;
     margin: 0 0 20px 0;
-    max-width: 50%;       /* ne dépasse pas la moitié de l'écran */
-    word-wrap: break-word; /* retour à la ligne si trop long */
-    text-align: left;      /* texte aligné à gauche */
+    max-width: 50%;
+    word-wrap: break-word;
+    text-align: left;
+    text-transform: capitalize;
 }
 
-/* BOUTONS */
+/* BOUTONS D'ACCUEIL */
 .buttons {
     display: flex;
     gap: 15px;
-    flex-wrap: wrap;      /* passent à la ligne si trop larges */
-    justify-content: flex-start; /* alignement à gauche */
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .btn-img img {
-    width: 120px;          
-    max-width: 40vw;       
+    width: 180px;  /* largeur uniforme pour tous */
+    height: auto;
+    object-fit: contain;
     transition: transform 0.3s;
 }
 
 .btn-img img:hover {
     transform: scale(1.05);
-}
-
-/* MOBILE */
-@media screen and (max-width: 768px) {
-    .content h1 {
-        font-size: 2.2rem;
-        max-width: 90%;  /* sur mobile, presque toute la largeur */
-    }
-
-    .buttons {
-        flex-direction: column;
-        gap: 10px;        /* moins d’espace entre les boutons */
-        justify-content: flex-start;
-    }
-
-    .btn-img img {
-        width: 100px;
-        max-width: 70vw;
-    }
 }
 
 /* =====================================
@@ -145,7 +131,7 @@ body {
 .info-section {
     align-items: center;
     text-align: center;
-    padding-top: 80px; 
+    padding-top: 80px;
 }
 
 .glass-box {
@@ -178,7 +164,7 @@ body {
 }
 
 /* =====================================
-   FILM.HTML - CONTENEUR PRINCIPAL
+   FILM.HTML
 ===================================== */
 .main-container {
     margin-top: 100px;
@@ -188,7 +174,6 @@ body {
     width: 100%;
 }
 
-/* Lecteur Vidéo */
 .video-container { 
     width: 90%; 
     max-width: 1000px;
@@ -197,7 +182,7 @@ body {
 
 .video-wrapper { 
     position: relative;
-    padding-bottom: 56.25%; /* Ratio 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     background: #000;
@@ -212,7 +197,6 @@ body {
     border: none; 
 }
 
-/* Section Interaction */
 .interaction-box {
     text-align: center;
     padding: 40px 20px;
@@ -237,13 +221,15 @@ body {
     transition: transform 0.3s;
     margin-top: 10px;
     text-transform: uppercase;
+    width: 200px; /* largeur uniforme */
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
 }
 
 .btn-ticket:hover {
     transform: scale(1.1);
 }
 
-/* Section Description */
 .description-section {
     max-width: 800px;
     padding: 40px 20px;
@@ -265,11 +251,19 @@ body {
 }
 
 /* =====================================
-   MEDIA QUERIES MOBILE
+   LOGOS / IMAGES UNIFORMES
+===================================== */
+.prod-logo img,
+.btn-img img {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* =====================================
+   MEDIA QUERIES
 ===================================== */
 @media screen and (max-width: 768px) {
-
-    /* NAVIGATION */
     .top-nav {
         flex-direction: column;
         align-items: flex-start;
@@ -278,7 +272,6 @@ body {
 
     .prod-logo img {
         width: 70px;
-        margin-bottom: 10px;
     }
 
     .links a {
@@ -287,22 +280,26 @@ body {
         font-size: 12px;
     }
 
-    /* ACCUEIL / TITRE */
-    h1 {
+    .content {
+        padding: 20px 20px 10vh 20px;
+    }
+
+    .content h1 {
         font-size: 2.2rem;
-        margin-bottom: 20px;
+        max-width: 90%;
     }
 
     .buttons {
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
+        justify-content: flex-start;
     }
 
     .btn-img img {
         width: 120px;
+        max-width: 70vw;
     }
 
-    /* FILM.HTML */
     .main-container {
         margin-top: 80px;
         padding: 0 10px;
@@ -323,6 +320,7 @@ body {
     }
 
     .btn-ticket {
+        width: 150px;
         padding: 12px 20px;
         font-size: 0.9rem;
     }
@@ -341,7 +339,6 @@ body {
         line-height: 1.4;
     }
 
-    /* SECTIONS D'INFO */
     .glass-box {
         padding: 25px 15px;
         max-width: 90%;
@@ -355,5 +352,13 @@ body {
     .scroll-down, .scroll-up {
         font-size: 0.8rem;
     }
+}
+
+.description-section p,
+.interaction-box p,
+.cast-list li,
+.scroll-down,
+.scroll-up {
+    font-size: 0.9rem;
 }
 
