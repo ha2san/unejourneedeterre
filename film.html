@@ -23,14 +23,7 @@
 <main class="film-container">
 
     <div class="cinema-title-wrapper">
-        <pre class="ascii-art cinema-title">
- ######  #### ##    ## ######## ##     ##    ###
-##    ##  ##  ###   ## ##       ###   ###   ## ##
-##        ##  ####  ## ##       #### ####  ##   ##
-##        ##  ## ## ## ######   ## ### ## #######
-##        ##  ##  #### ##       ##     ## ##   ##
-##    ##  ##  ##   ### ##       ##     ## ##   ##
- ######  #### ##    ## ######## ##     ## ##   ##</pre>
+        <pre id="cinema-ascii" class="ascii-art cinema-title" aria-label="CINÉMA"></pre>
     </div>
 
     <div class="video-wrapper">
@@ -69,7 +62,7 @@
     <div id="ticket" class="kofi-block">
         <p class="kofi-label">Soutenir le film</p>
         <a class="kofi-link" href="https://ko-fi.com/salifpicot" target="_blank" rel="noopener noreferrer">
-            → ko-fi.com
+            → ko-fi.com/salifpicot
         </a>
     </div>
 
@@ -93,5 +86,188 @@
     </div>
 
 </main>
+
+<script>
+/*
+ * CINEMA — ASCII art 100% local, random à chaque rechargement
+ * Pool LARGE (≥900px), MEDIUM (560-899px), SMALL (<560px)
+ * → un style est tiré au hasard dans le pool de la taille courante
+ */
+(function () {
+
+    /* ========================================================
+       POOLS PAR TAILLE D'ÉCRAN
+       Chaque entrée = { name, lines[] }
+    ======================================================== */
+
+    var LARGE = [
+
+        { name: 'banner3-D', lines: [
+            ":'######::'####:'##::: ##:'########:'##::::'##::::'###::::",
+            "'##... ##:. ##:: ###:: ##: ##.....:: ###::'###:::'## ##:::",
+            " ##:::..::: ##:: ####: ##: ##::::::: ####'####::'##:. ##::",
+            " ##:::::::: ##:: ## ## ##: ######::: ## ### ##:'##:::. ##:",
+            " ##:::::::: ##:: ##. ####: ##...:::: ##. #: ##: #########:",
+            " ##::: ##:: ##:: ##:. ###: ##::::::: ##:.:: ##: ##.... ##:",
+            ". ######::'####: ##::. ##: ########: ##:::: ##: ##:::: ##:",
+            ":......:::....::..::::..::........::..:::::..::..:::::..::"]},
+
+        { name: 'colossal', lines: [
+            " .d8888b.8888888888b    8888888888888888b     d888       d8888 ",
+            "d88P  Y88b 888  8888b   888888       8888b   d8888      d88888 ",
+            "888    888 888  88888b  888888       88888b.d88888     d88P888 ",
+            "888        888  888Y88b 8888888888   888Y88888P888    d88P 888 ",
+            "888        888  888 Y88b888888       888 Y888P 888   d88P  888 ",
+            "888    888 888  888  Y88888888       888  Y8P  888  d88P   888 ",
+            "Y88b  d88P 888  888   Y8888888       888   \"   888 d8888888888 ",
+            " \"Y8888P\"8888888888    Y8888888888888888       888d88P     888 "]},
+
+        { name: 'broadway', lines: [
+            "    ,o888888o.     8 8888 b.             8 8 8888888888            ,8.       ,8.                   .8.         ",
+            "   8888     `88.   8 8888 888o.          8 8 8888                 ,888.     ,888.                 .888.        ",
+            ",8 8888       `8.  8 8888 Y88888o.       8 8 8888                .`8888.   .`8888.               :88888.       ",
+            "88 8888            8 8888 .`Y888888o.    8 8 8888               ,8.`8888. ,8.`8888.             . `88888.      ",
+            "88 8888            8 8888 8o. `Y888888o. 8 8 888888888888      ,8'8.`8888,8^8.`8888.           .8. `88888.     ",
+            "88 8888            8 8888 8`Y8o. `Y88888o8 8 8888             ,8' `8.`8888' `8.`8888.         .8`8. `88888.    ",
+            "88 8888            8 8888 8   `Y8o. `Y8888 8 8888            ,8'   `8.`88'   `8.`8888.       .8' `8. `88888.   ",
+            "`8 8888       .8'  8 8888 8      `Y8o. `Y8 8 8888           ,8'     `8.`'     `8.`8888.     .8'   `8. `88888.  ",
+            "   8888     ,88'   8 8888 8         `Y8o.` 8 8888          ,8'       `8        `8.`8888.   .888888888. `88888. ",
+            "    `8888888P'     8 8888 8            `Yo 8 888888888888 ,8'         `         `8.`8888. .8'       `8. `88888."]}
+    ];
+
+    var MEDIUM = [
+
+        { name: 'banner3', lines: [
+            " ######  #### ##    ## ######## ##     ##    ###    ",
+            "##    ##  ##  ###   ## ##       ###   ###   ## ##   ",
+            "##        ##  ####  ## ##       #### ####  ##   ##  ",
+            "##        ##  ## ## ## ######   ## ### ## ##     ## ",
+            "##        ##  ##  #### ##       ##     ## ######### ",
+            "##    ##  ##  ##   ### ##       ##     ## ##     ## ",
+            " ######  #### ##    ## ######## ##     ## ##     ## "]},
+
+        { name: 'banner', lines: [
+            " #####  ### #     # ####### #     #    #    ",
+            "#     #  #  ##    # #       ##   ##   # #   ",
+            "#        #  # #   # #       # # # #  #   #  ",
+            "#        #  #  #  # #####   #  #  # #     # ",
+            "#        #  #   # # #       #     # ####### ",
+            "#     #  #  #    ## #       #     # #     # ",
+            " #####  ### #     # ####### #     # #     # "]},
+
+        { name: 'nancyj', lines: [
+            " a88888b. dP 888888ba   88888888b 8888ba.88ba   .d888888  ",
+            "d8'   `88 88 88    `8b  88        88  `8b  `8b d8'    88  ",
+            "88        88 88     88 a88aaaa    88   88   88 88aaaaa88a ",
+            "88        88 88     88  88        88   88   88 88     88  ",
+            "Y8.   .88 88 88     88  88        88   88   88 88     88  ",
+            " Y88888P' dP dP     dP  88888888P dP   dP   dP 88     88  "]},
+
+        { name: 'cosmic', lines: [
+            "  .,-:::::  ::::::.    :::..,::::::  .        :    :::.     ",
+            ",;;;'````'  ;;;`;;;;,  `;;;;;;;''''  ;;,.    ;;;   ;;`;;    ",
+            "[[[         [[[  [[[[[. '[[ [[cccc   [[[[, ,[[[[, ,[[ '[[,  ",
+            "$$$         $$$  $$$ \"Y$c$$ $$\"\"\"\"   $$$$$$$$\"$$$c$$$cc$$$c ",
+            "`88bo,__,o, 888  888    Y88 888oo,__ 888 Y88\" 888o888   888,",
+            "  \"YUMMMMMP\"MMM  MMM     YM \"\"\"\"YUMMMMMM  M'  \"MMMYMM   \"\"` "]},
+
+        { name: 'nancyj-underlined', lines: [
+            " a88888b. dP 888888ba   88888888b 8888ba.88ba   .d888888  ",
+            "d8'   `88 88 88    `8b  88        88  `8b  `8b d8'    88  ",
+            "88        88 88     88 a88aaaa    88   88   88 88aaaaa88a ",
+            "88        88 88     88  88        88   88   88 88     88  ",
+            "Y8.   .88 88 88     88  88        88   88   88 88     88  ",
+            " Y88888P' dP dP     dP  88888888P dP   dP   dP 88     88  ",
+            "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"]}
+    ];
+
+    var SMALL = [
+
+        { name: 'letters', lines: [
+            " CCCCC  IIIII NN   NN EEEEEEE MM    MM   AAA   ",
+            "CC    C  III  NNN  NN EE      MMM  MMM  AAAAA  ",
+            "CC       III  NN N NN EEEEE   MM MM MM AA   AA ",
+            "CC    C  III  NN  NNN EE      MM    MM AAAAAAA ",
+            " CCCCC  IIIII NN   NN EEEEEEE MM    MM AA   AA "]},
+
+        { name: 'alphabet', lines: [
+            " CCC III N   N EEEE M   M  AA  ",
+            "C     I  NN  N E    MM MM A  A ",
+            "C     I  N N N EEE  M M M AAAA ",
+            "C     I  N  NN E    M   M A  A ",
+            " CCC III N   N EEEE M   M A  A "]},
+
+        { name: 'avatar', lines: [
+            " ____  _  _      _____ _      ____ ",
+            "/   _\\/ \\/ \\  /|/  __// \\__/|/  _ \\",
+            "|  /  | || |\\ |||  \\  | |/||| / \\|",
+            "|  \\__| || | \\|||  /_ | |  ||| |-||",
+            "\\____/\\_/\\_/  \\|\\____\\\\_/  \\|\\_/ \\|"]},
+
+        { name: 'jazmine', lines: [
+            ".oPYo. o o    o .oPYo. o     o      .oo ",
+            "8    8 8 8b   8 8.     8b   d8     .P 8 ",
+            "8      8 8`b  8 `boo   8`b d'8    .P  8 ",
+            "8      8 8 `b 8 .P     8 `o' 8   oPooo8 ",
+            "8    8 8 8  `b8 8      8     8  .P    8 ",
+            "`YooP' 8 8   `8 `YooP' 8     8 .P     8 "]}
+    ];
+
+    /* ========================================================
+       LOGIQUE PRINCIPALE
+    ======================================================== */
+
+    var el = document.getElementById('cinema-ascii');
+
+    function pickPool(w) {
+        if (w >= 900) return LARGE;
+        if (w >= 560) return MEDIUM;
+        return SMALL;
+    }
+
+    function randomFrom(pool) {
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function fitToContainer(pre, lines) {
+        var containerW = pre.parentElement.clientWidth;
+        var longest = 0;
+        for (var i = 0; i < lines.length; i++) {
+            if (lines[i].length > longest) longest = lines[i].length;
+        }
+        if (longest === 0 || containerW === 0) return;
+        var idealPx = containerW / (longest * 0.601);
+        pre.style.fontSize = Math.min(20, Math.max(3.5, idealPx)) + 'px';
+        pre.style.lineHeight = '1.25';
+    }
+
+    /* Style choisi une fois au chargement, gardé si resize dans la même tranche */
+    var currentPool = null;
+    var currentArt  = null;
+
+    function render(force) {
+        var pool = pickPool(window.innerWidth);
+        /* Si on change de tranche de taille → nouveau tirage aléatoire */
+        if (force || pool !== currentPool) {
+            currentPool = pool;
+            currentArt  = randomFrom(pool);
+        }
+        el.textContent = currentArt.lines.join('\n');
+        fitToContainer(el, currentArt.lines);
+    }
+
+    /* Rendu initial */
+    render(true);
+
+    /* Re-calcul au resize (debounce 150ms) */
+    var timer;
+    window.addEventListener('resize', function () {
+        clearTimeout(timer);
+        timer = setTimeout(function(){ render(false); }, 150);
+    });
+
+})();
+</script>
+
 </body>
 </html>
