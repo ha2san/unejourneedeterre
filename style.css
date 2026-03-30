@@ -54,7 +54,7 @@ body {
 .bg-slide {
     position: absolute;
     inset: 0;
-    background-size: cover;
+    background-size: 115%;
     background-position: center;
     opacity: 0;
     transition: opacity 1.5s ease;
@@ -171,7 +171,7 @@ body {
 
 .doc-text {
     font-size: 0.9rem;
-    line-height: 2.1;
+    line-height: 1.6;
     text-align: justify;
 }
 
@@ -231,14 +231,23 @@ body.film-page .links a:hover {
 .cinema-title-wrapper {
     text-align: center;
     margin-bottom: 56px;
+    overflow: hidden;
 }
 
-.cinema-svg-title {
-    width: 100%;
-    max-width: 680px;
-    height: auto;
+.ascii-art.cinema-title {
+    /* font-size en vw = suit exactement la largeur de l'écran */
+    font-size: clamp(3px, 1.55vw, 14px);
+    line-height: 1.35;
+    white-space: pre;
+    font-family: "Courier New", monospace;
+    background: linear-gradient(to bottom, #3a0ca3, #9d4edd, #3a0ca3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     display: block;
-    margin: 0 auto 10px;
+    text-align: left;
+    width: fit-content;
+    margin: 0 auto 16px;
 }
 
 .cinema-subtitle {
@@ -275,8 +284,8 @@ body.film-page .links a:hover {
 }
 .film-text p {
     font-size: 0.78rem;
-    line-height: 1.95;
-    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-bottom: 16px;
     color: #222;
 }
 
@@ -349,7 +358,7 @@ body.film-page .links a:hover {
 
 .credits p {
     font-size: 0.8rem;
-    line-height: 1.9;
+    line-height: 1.6;
     color: #333;
 }
 
@@ -361,13 +370,20 @@ body.film-page .links a:hover {
 
     /* NAV */
     .top-nav {
-        padding: 16px 20px;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent);
+        padding: 14px 16px;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+        flex-wrap: wrap;
+        gap: 8px;
     }
-    .prod-logo img { width: 90px; }
+    .prod-logo img { width: 80px; }
+    .links {
+        display: flex;
+        gap: 0;
+    }
     .links a {
-        margin-left: 14px;
-        font-size: 0.72rem;
+        margin-left: 12px;
+        font-size: 0.62rem;
+        letter-spacing: 0.05em;
     }
 
     /* HERO */
@@ -408,10 +424,6 @@ body.film-page .links a:hover {
         padding: 110px 20px 60px;
     }
 
-    .cinema-svg-title {
-        max-width: 100%;
-    }
-
     .purple-art {
         font-size: 0.42rem;
     }
@@ -427,7 +439,15 @@ body.film-page .links a:hover {
 }
 
 @media (max-width: 420px) {
-    .links { display: none; }
+    .top-nav {
+        padding: 12px 14px;
+    }
+    .prod-logo img { width: 70px; }
+    .links a {
+        margin-left: 10px;
+        font-size: 0.55rem;
+        letter-spacing: 0.02em;
+    }
 
     .hero h1 {
         font-size: clamp(1.6rem, 9vw, 2.2rem);
