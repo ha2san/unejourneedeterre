@@ -11,37 +11,53 @@
 
 <nav class="top-nav">
     <div class="prod-logo">
-        <a href="index.html"><img src="./logos/uranus-film.png"></a>
+        <a href="index.html"><img src="./logos/uranus-film.png" alt="Uranus Film"></a>
+    </div>
+    <div class="links">
+        <a href="#">CONTACT</a>
+        <a href="#">GALERIE</a>
+        <a href="#">SHOP</a>
     </div>
 </nav>
 
 <main class="film-container">
 
-<pre class="ascii-art cinema-title">
-  ,adPPYba,  88  8b,dPPYba,   ,adPPYba,  88,dPYba,,adPYba,
- a8"     ""  88  88P'   `"8a a8P_____88  88P'   "88"    "8a
- 8b          88  88       88 8PP"""""""  88      88      88
- "8a,   ,aa  88  88       88 "8b,   ,aa  88      88      88
-  `"Ybbd8"'  88  88       88  `"Ybbd8"'  88      88      88
-</pre>
+    <div class="cinema-title-wrapper">
+        <svg class="cinema-svg-title" viewBox="0 0 700 80" xmlns="http://www.w3.org/2000/svg" aria-label="Cinéma">
+            <defs>
+                <linearGradient id="titleGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3a0ca3"/>
+                    <stop offset="50%" stop-color="#9d4edd"/>
+                    <stop offset="100%" stop-color="#3a0ca3"/>
+                </linearGradient>
+            </defs>
+            <text x="50%" y="62" text-anchor="middle"
+                  font-family="'Courier New', monospace"
+                  font-size="72"
+                  font-weight="bold"
+                  letter-spacing="18"
+                  fill="url(#titleGrad)">CINÉMA</text>
+        </svg>
+        <p class="cinema-subtitle">UNE JOURNÉE DE TERRE</p>
+    </div>
 
-<div class="video-wrapper">
-    <iframe src="https://player.vimeo.com/video/TON_ID_VIDEO" allowfullscreen></iframe>
-</div>
+    <div class="video-wrapper">
+        <iframe src="https://player.vimeo.com/video/TON_ID_VIDEO" allowfullscreen title="Une Journée de Terre"></iframe>
+    </div>
 
-<div class="film-text">
-    <p>
-        Ce film est accessible gratuitement, néanmoins sa production et réalisation ont nécessité un coût.
-        Vous avez aimé le film ? Vous pouvez soutenir ce projet et les futurs en prenant votre ticket de
-        cinéma au montant que vous voulez via le lien ci-dessous.
-    </p>
-    <p>
-        C’est grâce à vous que l’on tourne des films. Votre considération compte énormément, nous permettant
-        ainsi de nous améliorer et de vous proposer de meilleures œuvres artistiques.
-    </p>
-</div>
+    <div class="film-text">
+        <p>
+            Ce film est accessible gratuitement, néanmoins sa production et réalisation ont nécessité un coût.
+            Vous avez aimé le film&nbsp;? Vous pouvez soutenir ce projet et les futurs en prenant votre ticket de
+            cinéma au montant que vous voulez via <a href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer" class="inline-link">le lien ci-dessous</a>.
+        </p>
+        <p>
+            C'est grâce à vous que l'on tourne des films. Votre considération compte énormément, nous permettant
+            ainsi de nous améliorer et de vous proposer de meilleures œuvres artistiques.
+        </p>
+    </div>
 
-<pre class="ascii-art purple-art">
+    <div class="purple-art" aria-hidden="true">
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⢹⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀
@@ -56,32 +72,34 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣆⠈⢁⣴⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣷⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-</pre>
+    </div>
 
-<div class="kofi-link">
-    <a href="https://ko-fi.com/" target="_blank">→ https://ko-fi.com/</a>
-</div>
+    <div id="ticket" class="kofi-block">
+        <p class="kofi-label">Soutenir le film</p>
+        <a class="kofi-link" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer">
+            → ko-fi.com
+        </a>
+    </div>
 
-<div class="credits">
-    <h3>Distribution</h3>
-    <p>
-        STEVEN MOUSSA alias « BAYKAT XOSLUMAN », RAHMA AMRATOU, MOHAMED NDIAYE,
-        SAMBA NIAME, ADAMA DIALLO, SALIF PICOT, MACODE BEYE, CHERIF DIALLO,
-        AMADOU CISSE, ABDOURAHMANE NIAME, DIEBA DIALLO, AWA DIOUF,
-        BANDEL BOCOUM, KADIA DIALLO, YAMA, FATY SECK, OUMAR BA et CHEICK BA
-    </p>
+    <div class="credits">
+        <h3>Distribution</h3>
+        <p>
+            STEVEN MOUSSA alias « BAYKAT XOSLUMAN », RAHMA AMRATOU, MOHAMED NDIAYE,
+            SAMBA NIAME, ADAMA DIALLO, SALIF PICOT, MACODE BEYE, CHERIF DIALLO,
+            AMADOU CISSE, ABDOURAHMANE NIAME, DIEBA DIALLO, AWA DIOUF,
+            BANDEL BOCOUM, KADIA DIALLO, YAMA, FATY SECK, OUMAR BA et CHEICK BA
+        </p>
 
-    <h3>Assistant réalisateur</h3>
-    <p>ABDOURAHMANE « ZROUL » DIOUF</p>
+        <h3>Assistant réalisateur</h3>
+        <p>ABDOURAHMANE « ZROUL » DIOUF</p>
 
-    <h3>Script</h3>
-    <p>MACODE BEYE</p>
+        <h3>Script</h3>
+        <p>MACODE BEYE</p>
 
-    <h3>Ingénieur son</h3>
-    <p>PAUL « ABBE » PEREIRA</p>
-</div>
+        <h3>Ingénieur son</h3>
+        <p>PAUL « ABBE » PEREIRA</p>
+    </div>
 
 </main>
 </body>
 </html>
-

@@ -28,9 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Écouteur d'événement pour le scroll
     window.addEventListener('scroll', handleScroll);
-    
-    // Initialisation
     handleScroll();
 });
