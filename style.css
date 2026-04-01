@@ -30,13 +30,14 @@ body {
     margin-left: 30px;
     font-size: 0.85rem;
     letter-spacing: 0.08em;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, color 0.4s ease;
 }
 .links a:hover { opacity: 0.65; }
 
 .prod-logo img {
     width: 130px;
     display: block;
+    transition: filter 0.4s ease;
 }
 
 /* ===== HERO ===== */
@@ -201,6 +202,9 @@ body.film-page .top-nav {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid #f0e8ff;
+}
+body.film-page .top-nav .prod-logo img {
+    filter: invert(1);
 }
 body.film-page .links a {
     color: #000;
@@ -460,4 +464,113 @@ body.film-page .links a:hover {
     .letter-section {
         padding: 70px 5% 80px;
     }
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+    background: #000;
+    color: #fff;
+    font-family: "Courier New", monospace;
+    padding: 56px 8% 28px;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-left img {
+    width: 90px;
+    opacity: 0.9;
+    display: block;
+}
+
+.footer-center {
+    text-align: center;
+    flex: 1;
+}
+
+.footer-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+}
+
+.footer-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+}
+
+.footer-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.footer-right a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+.footer-right a:hover { opacity: 1; }
+
+.footer-bottom {
+    padding-top: 24px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    opacity: 0.35;
+}
+
+/* Footer responsive */
+@media (max-width: 600px) {
+    .site-footer {
+        padding: 40px 6% 24px;
+    }
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+    .footer-right {
+        gap: 16px;
+    }
+}
+
+/* ===== NAV ADAPTIVE (index.html) ===== */
+.top-nav {
+    transition: background 0.4s ease;
+}
+
+/* Quand la nav passe sur la section blanche */
+.top-nav.nav-dark {
+    background: transparent;
+    border-bottom: none;
+}
+
+.top-nav.nav-dark .links a {
+    color: #000;
+}
+.top-nav.nav-dark .links a:hover {
+    opacity: 0.5;
+}
+
+/* Le logo s'inverse aussi : blanc → noir */
+.top-nav.nav-dark .prod-logo img {
+    filter: invert(1);
 }
